@@ -8,27 +8,59 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    permissions:          # 🔴 ESTO ES LO QUE FALTABA
-      contents: write
+    permissions:
+      contents: write        # Necesario para escribir github-metrics.svg
+
     steps:
-      - name: Generate GitHub Metrics
+      - name: Generate GitHub Metrics (terminal dark)
         uses: lowlighter/metrics@latest
         with:
+          # Auth
           token: ${{ secrets.METRICS_TOKEN }}
           user: iam31416
+
+          # Estilo general
           template: terminal
           base: header, activity, community, repositories, metadata
           config_timezone: Europe/Madrid
+          config_padding: 8, 15
+          config_animations: yes
 
+          # Tema oscuro tipo terminal
+          config_border: 0
+          config_twemoji: yes
+          config_display: large
+
+          # === Plugins visuales principales ===
+
+          # Calendario ISO (3D)
           plugin_isocalendar: yes
+          plugin_isocalendar_duration: full-year
+
+          # Lenguajes usados
           plugin_languages: yes
+          plugin_languages_ignored: html, css
+          plugin_languages_threshold: 2%
+
+          # Hábitos de commit
           plugin_habits: yes
-          plugin_traffic: yes
-          plugin_lines: yes
-          plugin_followup: yes
+          plugin_habits_from: 200
+          plugin_habits_facts: yes
+          plugin_habits_charts: yes
+
+          # Repositorios y actividad
           plugin_repositories: yes
+          plugin_repositories_featured: iam31416/calendars, iam31416/earnings_lab
           plugin_activity: yes
-          plugin_calendar: yes
-          plugin_stargazers: yes
+          plugin_activity_limit: 7
+          plugin_activity_visibility: public
+          plugin_activity_timestamps: yes
+          plugin_activity_days: 14
+
+          # Tópicos / tecnologías
           plugin_topics: yes
-          plugin_code: yes
+          plugin_topics_mode: mastered
+          plugin_topics_limit: 12
+
+          # Líneas de código aproximadas
+          plugin_lines: yes
