@@ -15,11 +15,9 @@ jobs:
           token: ${{ secrets.METRICS_TOKEN }}
           user: iam31416
           template: classic
-          base: header, activity, community, repositories, metadata
+          base: header, activity, repositories, metadata
           config_timezone: Europe/Madrid
 
+          # Plugins básicos y estables
           plugin_isocalendar: yes
           plugin_languages: yes
-          plugin_habits: yes
-          plugin_traffic: yes
-
