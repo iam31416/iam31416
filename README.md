@@ -1,3 +1,7 @@
+![Metrics](https://raw.githubusercontent.com/iam31416/iam31416/main/github-metrics.svg)
+
+
+
 ## Hi there 👋
 
 <!--
