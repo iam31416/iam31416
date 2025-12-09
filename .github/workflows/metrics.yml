@@ -8,6 +8,8 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    permissions:          # 🔴 ESTO ES LO QUE FALTABA
+      contents: write
     steps:
       - name: Generate GitHub Metrics
         uses: lowlighter/metrics@latest
@@ -18,6 +20,5 @@ jobs:
           base: header, activity, repositories, metadata
           config_timezone: Europe/Madrid
 
-          # Plugins básicos y estables
           plugin_isocalendar: yes
           plugin_languages: yes
