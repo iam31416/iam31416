@@ -9,58 +9,56 @@ jobs:
   build:
     runs-on: ubuntu-latest
     permissions:
-      contents: write        # Necesario para escribir github-metrics.svg
+      contents: write
 
     steps:
       - name: Generate GitHub Metrics (terminal dark)
         uses: lowlighter/metrics@latest
         with:
-          # Auth
+          # --- Autenticación ---
           token: ${{ secrets.METRICS_TOKEN }}
           user: iam31416
 
-          # Estilo general
-          template: terminal
-          base: header, activity, community, repositories, metadata
+          # --- Estilo general ---
+          template: classic
+          config_theme: dark
           config_timezone: Europe/Madrid
-          config_padding: 8, 15
           config_animations: yes
-
-          # Tema oscuro tipo terminal
+          config_padding: 8, 15
           config_border: 0
           config_twemoji: yes
-          config_display: large
+          base: header, activity, community, repositories, metadata
 
-          # === Plugins visuales principales ===
-
-          # Calendario ISO (3D)
+          # --- Calendario / contribuciones ---
           plugin_isocalendar: yes
           plugin_isocalendar_duration: full-year
 
-          # Lenguajes usados
+          # --- Lenguajes ---
           plugin_languages: yes
           plugin_languages_ignored: html, css
           plugin_languages_threshold: 2%
 
-          # Hábitos de commit
+          # --- Hábitos de commits ---
           plugin_habits: yes
           plugin_habits_from: 200
           plugin_habits_facts: yes
           plugin_habits_charts: yes
 
-          # Repositorios y actividad
-          plugin_repositories: yes
-          plugin_repositories_featured: iam31416/calendars, iam31416/earnings_lab
+          # --- Actividad reciente ---
           plugin_activity: yes
           plugin_activity_limit: 7
+          plugin_activity_days: 14
           plugin_activity_visibility: public
           plugin_activity_timestamps: yes
-          plugin_activity_days: 14
 
-          # Tópicos / tecnologías
+          # --- Repositorios destacados (ajusta a los tuyos o borra la línea) ---
+          plugin_repositories: yes
+          plugin_repositories_featured: iam31416/iam31416
+
+          # --- Tópicos / tecnologías ---
           plugin_topics: yes
           plugin_topics_mode: mastered
           plugin_topics_limit: 12
 
-          # Líneas de código aproximadas
+          # --- Líneas de código aproximadas ---
           plugin_lines: yes
