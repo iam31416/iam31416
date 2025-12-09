@@ -1,4 +1,6 @@
-![Metrics](https://raw.githubusercontent.com/iam31416/iam31416/main/github-metrics.svg)
+![Metrics](https://raw.githubusercontent.com/iam31416/iam31416/main/github-metrics.svg?v=2)
+
+
 
 
 
